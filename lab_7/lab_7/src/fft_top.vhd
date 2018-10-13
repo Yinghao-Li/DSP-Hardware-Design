@@ -35,6 +35,7 @@ architecture arch of fft_top is
     signal imag_out_temp: data_out_t;
     signal w_r : w_t;
     signal w_i : w_t;
+	signal temp_valid : std_logic;
 
     component stage0
         port(
@@ -231,13 +232,15 @@ begin
         if(rising_edge(clk)) then
             if (rst = '1') then
                 next_in <= '0';
-                out_valid <= '0';
+				temp_valid <= '0';
             else
                 next_in <= '1';
-                out_valid <= in_valid;
+				temp_valid <= in_valid;
             end if;
         end if;
     end process;
+
+	out_valid <= temp_valid;
 
     p2: process(clk)
     begin
@@ -246,7 +249,7 @@ begin
                 data_real_out <= (others => "0000000000000000");
                 data_imag_out <= (others => "0000000000000000");
             else
-                if (out_valid <= '1') then
+                if (temp_valid <= '1') then
                     data_real_out(0) <= real_out_temp(0);
                     data_real_out(1) <= real_out_temp(4);
                     data_real_out(2) <= real_out_temp(2);
