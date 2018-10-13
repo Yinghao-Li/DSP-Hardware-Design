@@ -38,8 +38,6 @@ architecture arch of fft_top is
 
     component stage0
         port(
-            clk, rst: in std_logic;
-            in_valid: in std_logic;
             a_real: in signed (7 downto 0);
             b_real: in signed (7 downto 0);
             w_real: in signed (8 downto 0);
@@ -52,8 +50,6 @@ architecture arch of fft_top is
     end component;
     component stage1 is
         port (
-            clk, rst: in std_logic;
-            in_valid: in std_logic;
             a_real: in signed (10 downto 0);
             a_imag: in signed (10 downto 0);
             b_real: in signed (10 downto 0);
@@ -68,8 +64,6 @@ architecture arch of fft_top is
     end component;
     component stage2 is
         port (
-            clk, rst: in std_logic;
-            in_valid: in std_logic;
             a_real: in signed (13 downto 0);
             a_imag: in signed (13 downto 0);
             b_real: in signed (13 downto 0);
@@ -95,9 +89,6 @@ begin
 
     s00: stage0
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => data_in(0),
         b_real => data_in(4),
         w_real => w_r(0),
@@ -108,9 +99,6 @@ begin
         y_imag => imag_temp_1(4));
     s01: stage0
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => data_in(1),
         b_real => data_in(5),
         w_real => w_r(1),
@@ -121,9 +109,6 @@ begin
         y_imag => imag_temp_1(5));
     s02: stage0
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => data_in(2),
         b_real => data_in(6),
         w_real => w_r(2),
@@ -134,9 +119,6 @@ begin
         y_imag => imag_temp_1(6));
     s03: stage0
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => data_in(3),
         b_real => data_in(7),
         w_real => w_r(3),
@@ -148,9 +130,6 @@ begin
 
     s10: stage1
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => real_temp_1(0),
         a_imag => imag_temp_1(0),
         b_real => real_temp_1(2),
@@ -163,9 +142,6 @@ begin
         y_imag => imag_temp_2(2));
     s11: stage1
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => real_temp_1(1),
         a_imag => imag_temp_1(1),
         b_real => real_temp_1(3),
@@ -178,9 +154,6 @@ begin
         y_imag => imag_temp_2(3));
     s12: stage1
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => real_temp_1(4),
         a_imag => imag_temp_1(4),
         b_real => real_temp_1(6),
@@ -193,9 +166,6 @@ begin
         y_imag => imag_temp_2(6));
     s13: stage1
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => real_temp_1(5),
         a_imag => imag_temp_1(5),
         b_real => real_temp_1(7),
@@ -209,9 +179,6 @@ begin
 
     s20: stage2
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => real_temp_2(0),
         a_imag => imag_temp_2(0),
         b_real => real_temp_2(1),
@@ -224,9 +191,6 @@ begin
         y_imag => imag_out_temp(1));
     s21: stage2
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => real_temp_2(2),
         a_imag => imag_temp_2(2),
         b_real => real_temp_2(3),
@@ -239,9 +203,6 @@ begin
         y_imag => imag_out_temp(3));
     s22: stage2
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => real_temp_2(4),
         a_imag => imag_temp_2(4),
         b_real => real_temp_2(5),
@@ -254,9 +215,6 @@ begin
         y_imag => imag_out_temp(5));
     s23: stage2
     port map(
-        clk => clk,
-        rst => rst,
-        in_valid => in_valid,
         a_real => real_temp_2(6),
         a_imag => imag_temp_2(6),
         b_real => real_temp_2(7),

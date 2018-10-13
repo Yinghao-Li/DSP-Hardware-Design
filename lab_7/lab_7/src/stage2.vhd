@@ -4,8 +4,6 @@ use ieee.numeric_std.all;
 
 entity stage2 is
     port (
-        clk, rst: in std_logic;
-        in_valid: in std_logic;
         a_real: in signed (13 downto 0);
         a_imag: in signed (13 downto 0);
         b_real: in signed (13 downto 0);
