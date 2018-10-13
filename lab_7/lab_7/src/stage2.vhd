@@ -38,8 +38,8 @@ begin
     begin
         ar_ex := a_real(13) & a_real;
         br_ex := b_real(13) & b_real;
-        ai_ex := a_imag(13) & a_real;
-        bi_ex := b_imag(13) & b_real;
+        ai_ex := a_imag(13) & a_imag;
+        bi_ex := b_imag(13) & b_imag;
         add_real <= ar_ex + br_ex;
         add_imag <= ai_ex + bi_ex;
         sub_real <= ar_ex - br_ex;
@@ -59,7 +59,7 @@ begin
         ri := sub_real * w_imag;
         ir := sub_imag * w_real;
         ii := sub_imag * w_imag;
-        mul_real <= rr + ii;
+        mul_real <= rr - ii;
         mul_imag <= ri + ir;
     end process;
 

@@ -220,8 +220,8 @@ begin
         w_imag => w_i(0),
         x_real => real_out_temp(0),
         x_imag => imag_out_temp(0),
-        y_real => real_out_temp(4),
-        y_imag => imag_out_temp(4));
+        y_real => real_out_temp(1),
+        y_imag => imag_out_temp(1));
     s21: stage2
     port map(
         clk => clk,
@@ -235,8 +235,8 @@ begin
         w_imag => w_i(0),
         x_real => real_out_temp(2),
         x_imag => imag_out_temp(2),
-        y_real => real_out_temp(6),
-        y_imag => imag_out_temp(6));
+        y_real => real_out_temp(3),
+        y_imag => imag_out_temp(3));
     s22: stage2
     port map(
         clk => clk,
@@ -248,8 +248,8 @@ begin
         b_imag => imag_temp_2(5),
         w_real => w_r(0),
         w_imag => w_i(0),
-        x_real => real_out_temp(1),
-        x_imag => imag_out_temp(1),
+        x_real => real_out_temp(4),
+        x_imag => imag_out_temp(4),
         y_real => real_out_temp(5),
         y_imag => imag_out_temp(5));
     s23: stage2
@@ -263,8 +263,8 @@ begin
         b_imag => imag_temp_2(7),
         w_real => w_r(0),
         w_imag => w_i(0),
-        x_real => real_out_temp(3),
-        x_imag => imag_out_temp(3),
+        x_real => real_out_temp(6),
+        x_imag => imag_out_temp(6),
         y_real => real_out_temp(7),
         y_imag => imag_out_temp(7));
 
@@ -285,12 +285,26 @@ begin
     begin
         if(rising_edge(clk)) then
             if (rst = '1') then
-                data_real_out <= (others => '0');
-                data_imag_out <= (others => '0');
+                data_real_out <= (others => "0000000000000000");
+                data_imag_out <= (others => "0000000000000000");
             else
                 if (out_valid <= '1') then
-                    data_real_out <= real_out_temp;
-                    data_imag_out <= imag_out_temp;
+                    data_real_out(0) <= real_out_temp(0);
+                    data_real_out(1) <= real_out_temp(4);
+                    data_real_out(2) <= real_out_temp(2);
+                    data_real_out(3) <= real_out_temp(6);
+                    data_real_out(4) <= real_out_temp(1);
+                    data_real_out(5) <= real_out_temp(5);
+                    data_real_out(6) <= real_out_temp(3);
+                    data_real_out(7) <= real_out_temp(7);
+                    data_imag_out(0) <= imag_out_temp(0);
+                    data_imag_out(1) <= imag_out_temp(4);
+                    data_imag_out(2) <= imag_out_temp(2);
+                    data_imag_out(3) <= imag_out_temp(6);
+                    data_imag_out(4) <= imag_out_temp(1);
+                    data_imag_out(5) <= imag_out_temp(5);
+                    data_imag_out(6) <= imag_out_temp(3);
+                    data_imag_out(7) <= imag_out_temp(7);
                 end if;
             end if;
         end if;

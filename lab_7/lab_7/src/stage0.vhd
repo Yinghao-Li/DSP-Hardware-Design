@@ -27,7 +27,7 @@ architecture st0 of stage0 is
 begin
 
     --add and sub
-    add_sub_process: process(a_real, b_real)
+    add_sub_process: process(a_real, b_real, x_temp_real)
         variable a_ex: signed (8 downto 0);
         variable b_ex: signed (8 downto 0);
     begin
@@ -40,24 +40,11 @@ begin
 
     --mul
     mul_process: process(sub_real, w_real, w_imag)
-        variable data_in_ext_1 : signed (26 downto 0);
-        variable data_in_ext_2 : signed (26 downto 0);
-        variable data_concat_p1 : signed (27 downto 0);
-        variable data_mult_p2 : signed (36 downto 0);
-        variable sign_ext_data: signed (1 downto 0);
         variable rr: signed (18 downto 0);
         variable ri: signed (18 downto 0);
     begin
-        data_in_ext_1 (26 downto 18) := w_real;
-        data_in_ext_1 (17 downto 0)  := (others => '0');
-        data_in_ext_2 (8 downto 0)   := w_imag;
-        data_in_ext_2 (26 downto 9)  := (others => w_imag (8));
-        data_concat_p1 := (data_in_ext_1(26) & data_in_ext_1) + data_in_ext_2;
-        data_mult_p2 := data_concat_p1 * sub_real;
-
-        sign_ext_data := '0' & data_mult_p2(17);
-        rr(17 downto 0) := signed(data_mult_p2(35 downto 18)) + sign_ext_data;
-        ri(17 downto 0) := data_mult_p2(17 downto 0);
+        rr(17 downto 0) := sub_real * w_real;
+        ri(17 downto 0) := sub_real * w_imag;
         rr := rr(17) & rr(17 downto 0);
         ri := ri(17) & ri(17 downto 0);
         mul_real <= rr;
