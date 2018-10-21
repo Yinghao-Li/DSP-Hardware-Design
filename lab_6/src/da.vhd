@@ -71,13 +71,13 @@ begin
                 if (in_valid = '1') then
                     if (count = "00") then
                         data <= data_in_3(0) & data_in_2(0) & data_in_1(0) & data_in_0(0);
-						turn_flag <= '0';
+                        turn_flag <= '0';
                     elsif (count = "01") then
                         data <= data_in_3(1) & data_in_2(1) & data_in_1(1) & data_in_0(1);
-						turn_flag <= '0';
+                        turn_flag <= '0';
                     elsif (count = "10") then
                         data <= data_in_3(2) & data_in_2(2) & data_in_1(2) & data_in_0(2);
-						turn_flag <= '1';
+                        turn_flag <= '1';
                     else
                         data <= data_in_3(3) & data_in_2(3) & data_in_1(3) & data_in_0(3);
                         turn_flag <= '0';
