@@ -11,24 +11,24 @@ This is a readme file for my codes.
 ## Structure
 
 ```
-code\\
+\code
 |
-|---encoder\\
-|---|---src\\
+|---\encoder
+|---|---\src
 |---|---|---encoder_pkg.vhd
 |---|---|---encoder.vhd
-|---|---tb\\
+|---|---\tb
 |---|---|---tb_encoder.vhd
 |
-|---decoder\\
-|---|---src\\
+|---\decoder
+|---|---\src
 |---|---|---decoder_pkg.vhd
 |---|---|---decoder.vhd
-|---|---tb\\
+|---|---\tb
 |---|---|---tb_decoder.vhd
 |
-|---coder\\
-|---|---src\\
+|---\coder
+|---|---\src
 |---|---|---coder_pkg.vhd
 |---|---|---encoder_plus.vhd
 |---|---|---decoder_plus.vhd
