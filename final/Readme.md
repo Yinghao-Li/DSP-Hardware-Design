@@ -56,7 +56,3 @@ Useful part
 `coder_pkg.vhd`, `encoder_plus.vhd` and `decoder_plus.vhd` are well annotated. Refer to these annotatioin to get detailed explanation for my code.
 
 Moreover, useful graphs can be found in the CDR slides that briefly described how the encoder and decoder work.
-
-## Flaws
-
-- `decoder_plus.vhd` failes timing. This is caused by lines 154-167. Should break this into several stages in future designs.
