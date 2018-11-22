@@ -10,6 +10,7 @@ This is a readme file for my codes.
 
 ## Structure
 
+```
 code\\
 |
 |---encoder\\
@@ -31,8 +32,7 @@ code\\
 |---|---|---coder_pkg.vhd
 |---|---|---encoder_plus.vhd
 |---|---|---decoder_plus.vhd
-|
-other codes not written by me.
+```
 
 ## Introduction to files
 
